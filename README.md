@@ -112,6 +112,4 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 [Demo的地址](https://github.com/yubin-X/UISearchControllerDemo)
 
 
->  这是目前我能想到的处理方式，如果有更好的处理方式请留言。
-
 
