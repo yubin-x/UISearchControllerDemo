@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol Delegate <NSObject>
+@protocol ResultViewControllerDelegate <NSObject>
 
-- (void)didselect;
+@required
+
+- (void)resultViewController:(UIViewController *)vc didSelectRow:(NSIndexPath *)indexPath;
 
 @end
 
 @interface ResultViewController : UIViewController
-@property(nonatomic) id<Delegate> delegate;
+
+@property(nonatomic, weak) id<ResultViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (weak, nonatomic) IBOutlet UITableView *resultTalbeView;
+
 @end

@@ -12,7 +12,7 @@
 
 @interface ResultViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *resultTalbeView;
+
 
 @end
 
@@ -29,19 +29,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 12;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RESULT_CELL" forIndexPath:indexPath];
-    cell.textLabel.text = @"asdasdasd";
+    cell.textLabel.text = [self.dataSource objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(didselect)]) {
-        [_delegate didselect];
+    if (_delegate && [_delegate respondsToSelector:@selector(resultViewController:didSelectRow:)]) {
+        [_delegate resultViewController:self didSelectRow:indexPath];
     }
 }
 

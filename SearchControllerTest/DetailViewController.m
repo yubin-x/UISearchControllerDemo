@@ -10,13 +10,15 @@
 
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *contentLbl;
+
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.contentLbl.text = self.contentStr;
 }
 
 - (void)didReceiveMemoryWarning {
