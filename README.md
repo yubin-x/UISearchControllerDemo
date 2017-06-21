@@ -71,12 +71,13 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 ```
 
 ## 注意点
+
 * 当使用子页面展示搜索结果的时候，一定要注意使用`UISearchController`所在的页面的`UINavigationController` 去`push`出子页面. 可以使用`Block`或者`Delegate`实现将子页面的点击跳转事件转移到父级页面去处理。如果使用结果页面的`UINavigationController`会导致子页面push出的子页面上有一个`UISearchBar`。
+
 
 * UISearchController默认的实现是点击UISearchBar的时候不显示SearchResultsController，如果要实现点击SearchBar立马就显示搜索结果页面可以使用KVO 监听`SearchResultsController.view`的`hidden`属性，保证`hidden`属性的值一直为`NO`。如下代码所示
 
 ```objc
-
 - (void)configSearchController {
     
     ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
@@ -110,4 +111,7 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 ```
 [Demo的地址](https://github.com/yubin-X/UISearchControllerDemo)
 
+
 >  这是目前我能想到的处理方式，如果有更好的处理方式请留言。
+
+
