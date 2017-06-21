@@ -35,8 +35,7 @@ self.searchController = [[UISearchController alloc] initWithSearchResultsControl
 ## 使用SearchResultsController 展示搜索结果
 
 ```objc
- ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
-
+ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
 self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultVC];
 ```
 
@@ -73,6 +72,7 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 * UISearchController默认的实现是点击UISearchBar的时候不显示SearchResultsController，如果要实现点击SearchBar立马就显示搜索结果页面可以使用KVO 监听`SearchResultsController.view`的`hidden`属性，保证`hidden`属性的值一直为`NO`
 
 ```objc
+
 - (void)configSearchController {
     
     ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
@@ -104,5 +104,4 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 }
 
 ```
-
 [Demo的地址](https://github.com/yubin-X/UISearchControllerDemo)
