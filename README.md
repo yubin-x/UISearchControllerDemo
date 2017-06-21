@@ -27,33 +27,33 @@ UISearchController 是一个非常好用的搜索控件，看中的就是他的�
 
 ## 使用当前页面展示搜索结果
 
-```
+```objc
 self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
 ```
-当初始化方法的resultController传值为nil的时候，表示使用当前页面作为结果展示页面
+当初始化方法的`initWithSearchResultsController:`传值为`nil`的时候，表示使用当前页面作为结果展示页面
 
 ## 使用SearchResultsController 展示搜索结果
 
-```
+```objc
  ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
 
 self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultVC];
 ```
 
-当初始化方法的resultController传值为结果展示页面的视图控制器时，表示搜索结果在指定页面显示。
+当初始化方法的`initWithSearchResultsController:`传值为结果展示页面的视图控制器`resultVC`时，表示搜索结果在指定页面显示。
 
 ## 代理方法
 
 ### UISearchResultsUpdating
 
-```
+```objc
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController;
 ```
 SearchBar的输入框内容发生变化的时候会调用此代理方法，在此方法中可以**实时**处理一些对数据的获取过滤操作
 
 ### UISearchControllerDelegate
 
-```
+```objc
 // UISearchController 将要模态出来的代理方法
 - (void)willPresentSearchController:(UISearchController *)searchController;
 // UISearchController 已经模态出来的代理方法
@@ -68,11 +68,11 @@ SearchBar的输入框内容发生变化的时候会调用此代理方法，在�
 ```
 
 ## 注意点
-* 当使用子页面展示搜索结果的时候，一定要注意使用`UISearchController`所在的页面的`UINavigationController` 去`push`出子页面. 可以使用`Block`或者`Delegate`实现将子页面的点击事件转移到父级页面去处理
+* 当使用子页面展示搜索结果的时候，一定要注意使用`UISearchController`所在的页面的`UINavigationController` 去`push`出子页面. 可以使用`Block`或者`Delegate`实现将子页面的点击跳转事件转移到父级页面去处理
 
 * UISearchController默认的实现是点击UISearchBar的时候不显示SearchResultsController，如果要实现点击SearchBar立马就显示搜索结果页面可以使用KVO 监听`SearchResultsController.view`的`hidden`属性，保证`hidden`属性的值一直为`NO`
 
-```
+```objc
 - (void)configSearchController {
     
     ResultViewController *resultVC = [[ResultViewController alloc] initWithNibName:@"ResultViewController" bundle:nil];
